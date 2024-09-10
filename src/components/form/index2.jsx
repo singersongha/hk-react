@@ -35,15 +35,20 @@ const Form = () => {
         </p>
       </div>
       <div>
-        {/*list 그리기*/}
-        {log
-          .filter(({ name }) => !search || name.includes(search))
-          .map(({ name, age }) => (
-            <div>
-              <p>name:{name}</p>
-              <p>age:{age}</p>
-            </div>
-          ))}
+        <table style={{ border: "1px solid black" }}>
+          <tr>
+            <th style={{ border: "1px solid black" }}>name</th>
+            <th style={{ border: "1px solid black" }}>age</th>
+          </tr>
+          {log
+            .filter(({ name }) => !search || name.includes(search))
+            .map(({ name, age }) => (
+              <tr key={name}>
+                <td style={{ border: "1px solid black" }}>{name}</td>
+                <td style={{ border: "1px solid black" }}>{age}</td>
+              </tr>
+            ))}
+        </table>
       </div>
     </div>
   );
