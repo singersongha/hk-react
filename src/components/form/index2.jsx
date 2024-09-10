@@ -1,11 +1,17 @@
 import { useState } from "react";
 
+import InputValue from "./InputValue";
+
 const Form = () => {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState(0);
   const [log, setLog] = useState([]);
   const [search, setSearch] = useState("");
   const [order, setOrder] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState(0);
+
+  const handleRegister = () => {
+    setLog((prev) => [...prev, { name, age }]);
+  };
 
   const handleSortName = () => {
     const sortLog = [...log].sort((a, b) =>
@@ -15,34 +21,13 @@ const Form = () => {
     setOrder(!order);
   };
 
-  const onChangeInput = (e) => {
-    setName(e.target.value);
-    //setLog(text);
-  };
-
-  const onChangeNumber = (e) => {
-    setAge(Number(e.target.value));
-    //setLog(number);
-  };
-
-  const handleRegister = () => {
-    setLog((prev) => [...prev, { name, age }]);
-  };
-
   return (
-    <div className="">
-      <div>
-        <label>name</label>
-        <input type="text" name="name" onChange={onChangeInput} />
-      </div>
-      <div>
-        <label>age</label>
-        <input type="number" name="age" onChange={onChangeNumber} />
-        <button onClick={handleRegister}>등록</button>
-        <p>
-          <input name="search" onChange={(e) => setSearch(e.target.value)} />
-        </p>
-      </div>
+    <div>
+      <InputValue setName={setName} setAge={setAge} />
+      <button onClick={handleRegister}>등록</button>
+      <p>
+        <input name="search" onChange={(e) => setSearch(e.target.value)} />
+      </p>
       <div>
         <table style={{ border: "1px solid black" }}>
           <tr>
