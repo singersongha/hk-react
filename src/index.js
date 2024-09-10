@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-//import Test2 from './Test2';
+import { RecoilRoot } from 'recoil';
 import reportWebVitals from './reportWebVitals';
-import Calculator from './Calculator';
+import App from "./App";
+import Calc from './components/calc';
+import Calculator from './components/Calculator';
+import Form from './index2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Calculator />
+    <RecoilRoot>
+        <Form />
+    </RecoilRoot>
 );
 
 // If you want to start measuring performance in your app, pass a function

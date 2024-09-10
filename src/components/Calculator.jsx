@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { calcUtill } from "";
+import { calc } from "../feature/calc";
 
 const Calculator = () => {
   const [input, setInput] = useState(0);
@@ -19,7 +19,7 @@ const Calculator = () => {
       <h1>{result}</h1>
       <input type="number" onChange={handleInput} />
       <div className="grid">
-        {calcUtill.map((obj) => (
+        {calc.map((obj) => (
           <button onClick={() => onChangeResult(obj.func)}>{obj.name}</button>
         ))}
       </div>
