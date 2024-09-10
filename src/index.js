@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import App from "./App";
 import Calc from './components/calc';
 import Calculator from './components/Calculator';
-import Form from './index2';
+import Form from './components/form/index2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
