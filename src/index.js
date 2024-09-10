@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Test2 from './Test2';
+//import Test2 from './Test2';
 import reportWebVitals from './reportWebVitals';
+import Calculator from './Calculator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Test2 />
+    <Calculator />
 );
 
 // If you want to start measuring performance in your app, pass a function

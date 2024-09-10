@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Log from "./components/Log";
 
 const Test2 = () => {
   const [text, setText] = useState("");
@@ -7,12 +8,13 @@ const Test2 = () => {
     setText(e.target.value);
     setLogs([...logs, e.target.value]);
   };
+
+  // 조건부 렌더링
   return (
     <div>
       <input name="text" onChange={onChangeText} />
-      {logs.map((str) => (
-        <p>{str}</p>
-      ))}
+      <Log />
+      {logs.map((str, i) => i % 2 === 0 && <Log i={i} str={str} />)}
     </div>
   );
 };
