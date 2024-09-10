@@ -1,6 +1,6 @@
 import { useState } from "react";
-
 import InputValue from "./InputValue";
+import "./index.css";
 
 const Form = () => {
   const [log, setLog] = useState([]);
@@ -21,6 +21,11 @@ const Form = () => {
     setOrder(!order);
   };
 
+  const handleDelete = (nameToDelete) => {
+    const updatedLog = log.filter(({ name }) => name !== nameToDelete);
+    setLog(updatedLog);
+  };
+
   return (
     <div>
       <InputValue setName={setName} setAge={setAge} />
@@ -29,23 +34,21 @@ const Form = () => {
         <input name="search" onChange={(e) => setSearch(e.target.value)} />
       </p>
       <div>
-        <table style={{ border: "1px solid black" }}>
+        <table>
           <tr>
-            <th style={{ border: "1px solid black" }} onClick={handleSortName}>
-              name
-            </th>
-            <th style={{ border: "1px solid black" }}>age</th>
-            <th style={{ border: "1px solid black" }}>수정</th>
-            <th style={{ border: "1px solid black" }}>삭제</th>
+            <th onClick={handleSortName}>name</th>
+            <th>age</th>
+            <th>수정</th>
+            <th>삭제</th>
           </tr>
           {log
             .filter(({ name }) => !search || name.includes(search))
             .map(({ name, age }) => (
               <tr key={name}>
-                <td style={{ border: "1px solid black" }}>{name}</td>
-                <td style={{ border: "1px solid black" }}>{age}</td>
-                <td style={{ border: "1px solid black" }}>수정</td>
-                <td style={{ border: "1px solid black" }}>삭제</td>
+                <td>{name}</td>
+                <td>{age}</td>
+                <td>수정</td>
+                <td onClick={() => handleDelete(name)}>삭제</td>
               </tr>
             ))}
         </table>
