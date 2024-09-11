@@ -1,17 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+//import './index.css';
 import { RecoilRoot } from 'recoil';
 import reportWebVitals from './reportWebVitals';
 import App from "./App";
 import Calc from './components/calc';
 import Calculator from './components/Calculator';
-import Form from './components/form/index2';
+import CustomForm from './components/CustomForm';
+import Test from './components/test/Test';
+import './global.css'
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import Template from './components/template';
+
+const router = createBrowserRouter(
+    [
+        {
+            path:"/",
+            element: <Template />,
+            children: [
+                {
+                    path:"/test",
+                    element: <Test />
+                },
+                {
+                    path:"/",
+                    element: <CustomForm />
+                },
+            ]
+        },
+        
+    ]
+    )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <RecoilRoot>
-        <Form />
+        <RouterProvider router={router} />
     </RecoilRoot>
 );
 
